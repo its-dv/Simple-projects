@@ -32,13 +32,13 @@
   <script>
     const textarea = document.getElementById("notepad");
 
-    // Сохраняем текст в localStorage
+    // Save text in localStorage
     function saveText() {
       localStorage.setItem("notepadContent", textarea.value);
       alert("Saved!");
     }
 
-    // Загружаем текст из localStorage
+    // Load text from localStorage
     function loadText() {
       const saved = localStorage.getItem("notepadContent");
       alert("Loaded!");
@@ -49,7 +49,7 @@
       }
     }
 
-    // Автозагрузка при открытии страницы
+    // Auto-load when the page is opened
     window.onload = () => {
       const saved = localStorage.getItem("notepadContent");
       if (saved) {
