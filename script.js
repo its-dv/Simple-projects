@@ -18,10 +18,21 @@ function loadText() {
   }
 }
 
+// Switch between light and dark themes
+function switchTheme() {
+  if (document.body.style.backgroundColor === "white") {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = 'white';
+  } else {
+    document.body.style.backgroundColor = "white";
+    document.body.style.color = 'black';
+  }
+}
+
 // Auto-load when the page is opened
 window.onload = () => {
   const saved = localStorage.getItem("notepadContent");
   if (saved) {
     textarea.value = saved;
   }
-};
+}
