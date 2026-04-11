@@ -20,13 +20,7 @@ function loadText() {
 
 // Switch between light and dark themes
 function switchTheme() {
-  if (document.body.style.backgroundColor === 'white') {
-    document.body.style.backgroundColor = 'black';
-    document.body.style.color = 'white';
-  } else {
-    document.body.style.backgroundColor = 'white';
-    document.body.style.color = 'black';
-  }
+  document.body.classList.toggle("dark");
 }
 
 // Auto-load when the page is opened

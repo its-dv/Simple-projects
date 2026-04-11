@@ -7,6 +7,9 @@ textarea {
       width: 100%;
       height: 500px;
       font-size: 18px;
+
+      border: #bdbdbd 1px solid;
+      border-radius: 3px;
 }
 
 button {
@@ -14,4 +17,52 @@ button {
       margin-right: 10px;
       padding: 10px 15px;
       font-size: 16px;
+      border-radius: 3px;
+
+      background-color: #ebebeb;
+      border: #bdbdbd 1px solid;
+      border-radius: 3px;
+}
+
+.dark {
+      background-color: #202020;
+      color: white;
+}
+
+.dark textarea {
+      width: 100%;
+      height: 500px;
+      font-size: 18px;
+
+      background-color: #191919;
+      border: #444 1px solid;
+      color: white;
+      border-radius: 3px;
+}
+
+.dark button {
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 3px;
+
+      background-color: #333;
+      color: white;
+      border: #555 1px solid;
+      border-radius: 3px;
+}
+
+#themeButton {
+      background-color: transparent;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+}
+
+
+
+.updated {
+  opacity: 0.5;
+  font-size: 12px;
 }
