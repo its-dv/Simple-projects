@@ -95,9 +95,10 @@ button {
   margin-left: 25%;
 }
 
-.language {
-  position: relative;
-  display: inline-block;
+#languages {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .dropdownTranslate {

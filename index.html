@@ -16,6 +16,7 @@
       <textarea id="notepad" data-i18n-placeholder="textarea"></textarea>
       <br>
 
+      <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
       <button data-i18n="save" onclick="saveText()">Save</button>
       <button data-i18n="load" onclick="loadText()">Load</button>
       <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
@@ -24,13 +25,13 @@
         <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
       </button>
 
-      <div class="language">
+      <div>
         <button class="preferenceButton" id="translateButton" onclick="translate()">
           <img class="fixedIcons" src="images/translate.svg" alt="Translate">
         </button>
 
         <fieldset id="dropdownTranslate" class="dropdownTranslate hidden">
-          <legend data-i18n="languages">Languages</legend>
+          <legend id="languages" data-i18n="languages">Languages</legend>
           <div>
             <input id="english" type="radio" name="language" value="en" checked>
             <label for="english">English</label>
@@ -49,8 +50,6 @@
           </div>
         </fieldset>
       </div>
-
-      <!-- Character Counter In Next Commits -->
 
       <div id="toast" class="toast">Message</div>
 

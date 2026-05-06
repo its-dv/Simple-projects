@@ -5,30 +5,40 @@ const textarea = document.getElementById("notepad");
 
 // Save text in localStorage
 function saveText() {
-  if (textarea.value !== null && textarea.value !== "") {
+  if (textarea.value !== "") {
     localStorage.setItem("notepadContent", textarea.value);
     showToast("Text saved");
   } else {
     showToast("Nothing to save");
   }
+
+  updateUI();
 }
 
 // Load text from localStorage
 function loadText() {
   const saved = localStorage.getItem("notepadContent");
-  if (saved !== null && saved !== "") {
+  if (saved !== null) {
     textarea.value = saved;
     showToast("Text loaded");
   } else {
     showToast("Nothing saved yet");
   }
+
+  updateUI();
 }
 
 // Clear the notepad
 function clearNotepad() {
-  textarea.value = "";
-  localStorage.removeItem("notepadContent");
-  showToast("Text cleared");
+  if (textarea.value !== "") {
+    showToast("Text cleared");
+    textarea.value = "";
+    localStorage.removeItem("notepadContent");
+  } else {
+    showToast("Text already cleared");
+  }
+
+  updateUI();
 }
 
 // Switch between light and dark themes
@@ -89,6 +99,28 @@ btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
 
+// Character counter
+function countCharacters() {
+  const characters = textarea.value;
+  let count = 0;
+  for (let i = 0; i < characters.length; i++) {
+    count++;
+  }
+  document.getElementById("characterCounter").textContent = translate("characterCounter") + count;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateUI();
+});
+
+textarea.addEventListener("input", () => {
+  countCharacters();
+});
+
+function updateUI() {
+  countCharacters();
+}
+
 // Translations
 const translations = {
   en: {
@@ -97,7 +129,9 @@ const translations = {
     clear: "Clear",
     languages: "Languages",
     rights: "© 2026 Simple Notepad. All rights not reserved.",
-    textarea: "Write your notes here..."
+    textarea: "Write your notes here...",
+    characterCounter: "Character count: ",
+    characterCounterError: "Character count: something went wrong..."
   },
   de: {
     save: "Speichern",
@@ -105,7 +139,9 @@ const translations = {
     clear: "Löschen",
     languages: "Sprachen",
     rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
-    textarea: "Schreiben Sie Ihre Notizen hier..."
+    textarea: "Schreiben Sie Ihre Notizen hier...",
+    characterCounter: "Zeichenanzahl: ",
+    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen..."
   },
   fr: {
     save: "Enregistrer",
@@ -113,7 +149,9 @@ const translations = {
     clear: "Effacer",
     languages: "Langues",
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
-    textarea: "Écrivez vos notes ici..."
+    textarea: "Écrivez vos notes ici...",
+    characterCounter: "Nombre de caractères : ",
+    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé..."
   },
   ru: {
     save: "Сохранить",
@@ -121,7 +159,9 @@ const translations = {
     clear: "Очистить",
     languages: "Языки",
     rights: "© 2026 Simple Notepad. Все права не защищены.",
-    textarea: "Напишите свои заметки здесь..."
+    textarea: "Напишите свои заметки здесь...",
+    characterCounter: "Количество символов: ",
+    characterCounterError: "Количество символов: что-то пошло не так..."
   }
 };
 
@@ -134,26 +174,28 @@ document.querySelectorAll('input[name="language"]').forEach(input => {
 
 let currentLang = localStorage.getItem("lang") || "en";
 
-function t(key) {
+function translate(key) {
   return translations[currentLang][key] || key;
 }
 
 function updateTexts() {
   // Simple text content
   document.querySelectorAll("[data-i18n]").forEach(el => {
-    el.textContent = t(el.dataset.i18n);
+    el.textContent = translate(el.dataset.i18n);
   });
 
   // Placeholder text content
   document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    el.placeholder = t(el.dataset.i18nPlaceholder);
+    el.placeholder = translate(el.dataset.i18nPlaceholder);
   });
 }
 
 function changeLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
+
   updateTexts();
+  updateUI()
 }
 
 updateTexts();
