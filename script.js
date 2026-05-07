@@ -15,6 +15,14 @@ function saveText() {
   updateUI();
 }
 
+// Ctrl + S to save
+window.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && (event.key.toLowerCase() === "s" || event.key.toLowerCase() === "ы")) {
+    event.preventDefault();
+    saveText();
+  }
+});
+
 // Load text from localStorage
 function loadText() {
   const saved = localStorage.getItem("notepadContent");
@@ -28,14 +36,23 @@ function loadText() {
   updateUI();
 }
 
+// Ctrl + L to load
+window.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && (event.key.toLowerCase() === "l" || event.key.toLowerCase() === "д")) {
+    event.preventDefault();
+    loadText();
+  }
+});
+
 // Clear the notepad
 function clearNotepad() {
-  if (textarea.value !== "") {
-    showToast("Text cleared");
+  const saved = localStorage.getItem("notepadContent");
+  if (saved !== null) {
+    showToast("Note cleared");
     textarea.value = "";
     localStorage.removeItem("notepadContent");
   } else {
-    showToast("Text already cleared");
+    showToast("Note already cleared");
   }
 
   updateUI();
