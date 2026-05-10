@@ -7,9 +7,9 @@ const textarea = document.getElementById("notepad");
 function saveText() {
   if (textarea.value !== "") {
     localStorage.setItem("notepadContent", textarea.value);
-    showToast("Text saved");
+    showToast(translate("textSaved"));
   } else {
-    showToast("Nothing to save");
+    showToast(translate("nothingToSave"));
   }
 
   updateUI();
@@ -28,9 +28,9 @@ function loadText() {
   const saved = localStorage.getItem("notepadContent");
   if (saved !== null) {
     textarea.value = saved;
-    showToast("Text loaded");
+    showToast(translate("textLoaded"));
   } else {
-    showToast("Nothing saved yet");
+    showToast(translate("nothingToLoad"));
   }
 
   updateUI();
@@ -47,12 +47,12 @@ window.addEventListener("keydown", (event) => {
 // Clear the notepad
 function clearNotepad() {
   const saved = localStorage.getItem("notepadContent");
-  if (saved !== null) {
-    showToast("Note cleared");
+  if (saved !== null || textarea.value !== "") {
+    showToast(translate("noteCleared"));
     textarea.value = "";
     localStorage.removeItem("notepadContent");
   } else {
-    showToast("Note already cleared");
+    showToast(translate("noteAlreadyCleared"));
   }
 
   updateUI();
@@ -148,7 +148,13 @@ const translations = {
     rights: "© 2026 Simple Notepad. All rights not reserved.",
     textarea: "Write your notes here...",
     characterCounter: "Character count: ",
-    characterCounterError: "Character count: something went wrong..."
+    characterCounterError: "Character count: something went wrong...",
+    textSaved: "Text saved",
+    nothingToSave: "Nothing to save",
+    textLoaded: "Text loaded",
+    nothingToLoad: "Nothing saved yet",
+    noteAlreadyCleared: "Note already cleared",
+    noteCleared: "Note cleared"
   },
   de: {
     save: "Speichern",
@@ -158,7 +164,13 @@ const translations = {
     rights: "© 2026 Simple Notepad. Alle Rechte nicht reserviert.",
     textarea: "Schreiben Sie Ihre Notizen hier...",
     characterCounter: "Zeichenanzahl: ",
-    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen..."
+    characterCounterError: "Zeichenanzahl: etwas ist schief gelaufen...",
+    textSaved: "Text gespeichert",
+    nothingToSave: "Nichts zum Speichern",
+    textLoaded: "Text geladen",
+    nothingToLoad: "Nichts gespeichert yet",
+    noteAlreadyCleared: "Notiz bereits gelöscht",
+    noteCleared: "Notiz gelöscht"
   },
   fr: {
     save: "Enregistrer",
@@ -168,7 +180,13 @@ const translations = {
     rights: "© 2026 Simple Notepad. Tous droits non réservés.",
     textarea: "Écrivez vos notes ici...",
     characterCounter: "Nombre de caractères : ",
-    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé..."
+    characterCounterError: "Nombre de caractères : quelque chose s'est mal passé...",
+    textSaved: "Texte enregistré",
+    nothingToSave: "Rien à enregistrer",
+    textLoaded: "Texte chargé",
+    nothingToLoad: "Rien enregistré pour le moment",
+    noteAlreadyCleared: "Note déjà effacée",
+    noteCleared: "Note effacée"
   },
   ru: {
     save: "Сохранить",
@@ -178,7 +196,13 @@ const translations = {
     rights: "© 2026 Simple Notepad. Все права не защищены.",
     textarea: "Напишите свои заметки здесь...",
     characterCounter: "Количество символов: ",
-    characterCounterError: "Количество символов: что-то пошло не так..."
+    characterCounterError: "Количество символов: что-то пошло не так...",
+    textSaved: "Текст сохранён",
+    nothingToSave: "Нечего сохранять",
+    textLoaded: "Текст загружен",
+    nothingToLoad: "Пока ничего не сохранено",
+    noteAlreadyCleared: "Заметка уже очищена",
+    noteCleared: "Заметка очищена"
   }
 };
 
