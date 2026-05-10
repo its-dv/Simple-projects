@@ -117,6 +117,24 @@ button {
   border: 1px solid #444;
 }
 
+#createNote {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  margin-top: 0px;
+}
+
+h1 {
+  margin: 0.15em 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
 /* 4. Notifications */
 .toast {
   position: fixed;
