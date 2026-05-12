@@ -1,5 +1,30 @@
 "use strict";
 
+// Notes structure (for future updates)
+let notes = [];
+let currentNoteId = null;
+
+// Create a new note (for future updates)
+function createNote() {
+  const note = {
+    id: Date.now(),
+    title: "Untitled",
+    content: "",
+    updatedAt: Date.now()
+  };
+
+  notes.push(note);
+  currentNoteId = note.id;
+
+  saveToStorage();
+  showToast(translate("noteCreated"));
+}
+
+// Save notes to localStorage (for future updates)
+function saveToStorage() {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
 // script.js - index.html
 const textarea = document.getElementById("notepad");
 
@@ -154,7 +179,8 @@ const translations = {
     textLoaded: "Text loaded",
     nothingToLoad: "Nothing saved yet",
     noteAlreadyCleared: "Note already cleared",
-    noteCleared: "Note cleared"
+    noteCleared: "Note cleared",
+    noteCreated: "Note created"
   },
   de: {
     save: "Speichern",
@@ -170,7 +196,8 @@ const translations = {
     textLoaded: "Text geladen",
     nothingToLoad: "Nichts gespeichert yet",
     noteAlreadyCleared: "Notiz bereits gelöscht",
-    noteCleared: "Notiz gelöscht"
+    noteCleared: "Notiz gelöscht",
+    noteCreated: "Notiz erstellt"
   },
   fr: {
     save: "Enregistrer",
@@ -186,7 +213,8 @@ const translations = {
     textLoaded: "Texte chargé",
     nothingToLoad: "Rien enregistré pour le moment",
     noteAlreadyCleared: "Note déjà effacée",
-    noteCleared: "Note effacée"
+    noteCleared: "Note effacée",
+    noteCreated: "Note créée"
   },
   ru: {
     save: "Сохранить",
@@ -202,7 +230,8 @@ const translations = {
     textLoaded: "Текст загружен",
     nothingToLoad: "Пока ничего не сохранено",
     noteAlreadyCleared: "Заметка уже очищена",
-    noteCleared: "Заметка очищена"
+    noteCleared: "Заметка очищена",
+    noteCreated: "Заметка создана"
   }
 };
 
