@@ -20,6 +20,11 @@ function createNote() {
   showToast(translate("noteCreated"));
 }
 
+// Rename the note title (for future updates)
+function titleRename() {
+  
+}
+
 // Save notes to localStorage (for future updates)
 function saveToStorage() {
   localStorage.setItem("notes", JSON.stringify(notes));
