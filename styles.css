@@ -5,6 +5,15 @@ body {
   margin: 0;
 }
 
+.dark {
+  background-color: #202020;
+  color: white;
+}
+
+h1 {
+  margin: 0.15em 0;
+}
+
 textarea {
   width: 100%;
   height: 100%;
@@ -13,7 +22,13 @@ textarea {
   box-sizing: border-box;
 
   border: #bdbdbd 1px solid;
-  border-radius: 3px;
+  border-radius: 2px;
+}
+
+.dark textarea {
+  background-color: #191919;
+  border: #444 1px solid;
+  color: white;
 }
 
 button {
@@ -28,37 +43,41 @@ button {
   border-radius: 3px;
 }
 
-/* 2. Theme */
-.dark {
-  background-color: #202020;
-  color: white;
-}
-
-.dark textarea {
-  width: 100%;
-  height: 500px;
-  font-size: 18px;
-
-  background-color: #191919;
-  border: #444 1px solid;
-  color: white;
-  border-radius: 3px;
-}
-
 .dark button {
-  margin-top: 10px;
-  margin-right: 10px;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 3px;
-
   background-color: #333;
-  color: white;
   border: #555 1px solid;
-  border-radius: 3px;
+  color: white;
 }
 
-/* 3. Preferences */
+.sidebar {
+  background: #ddd;
+  border: #bdbdbd 1px solid;
+  border-radius: 2px;
+  width: 250px;
+  padding: 10px;
+}
+
+.dark .sidebar {
+  background: #333;
+  border: #444 1px solid;
+}
+
+.main-container {
+  display: flex;
+  gap: 10px;
+  height: 75vh;
+}
+
+#notepad {
+  padding: 5px;
+}
+
+#characterCounter {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+/* 2. Preferences */
 .preferenceButton {
   background: none;
   padding: 0;
@@ -70,11 +89,7 @@ button {
 
 .dark .preferenceButton {
   background: none;
-  padding: 0;
   border: none;
-  cursor: pointer;
-  position: fixed;
-  top: 7px;
 
   filter: invert(1);
 }
@@ -98,15 +113,13 @@ button {
   text-align: center;
 }
 
-.dropdownTranslate {
+#dropdownTranslate {
   position: fixed;
   top: 45px;
   right: 10px;
   border-radius: 5px;
   width: 150px;
-}
 
-#dropdownTranslate {
   padding: 10px;
   background: #ebebeb;
   width: 100px;
@@ -128,17 +141,13 @@ button {
   margin-top: 0px;
 }
 
-h1 {
-  margin: 0.15em 0;
-}
-
 .row {
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
-/* 4. Notifications */
+/* 3. Notifications */
 .toast {
   position: fixed;
   bottom: 20%;
@@ -158,20 +167,7 @@ h1 {
   pointer-events: none;
 }
 
-/* 5. Utilities */
+/* 4. Utilities */
 .hidden {
   display: none;
-}
-
-/* 6. For future updates */
-
-.container {
-  display: flex;
-  height: 75vh;
-}
-
-.sidebar {
-  width: 250px;
-  background: #ddd;
-  padding: 10px;
 }
