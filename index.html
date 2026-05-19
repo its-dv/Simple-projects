@@ -15,7 +15,11 @@
 
     <main>
       <div class="row">
-        <h2>Note title</h2>
+        <h2 id="noteTitle">Untitled</h2>
+        <input type="text" id="titleInput" placeholder="Enter note title..." maxLength="20" style="display:none;">
+        <button id="titleRename" onclick="popup()">
+          <img class="fixedIcons" src="images/pencil.svg" alt="Translate">
+        </button>
         <button id="createNote" onclick="createNote()">+</button>
       </div>
 
@@ -32,9 +36,11 @@
       </div>
 
       <p id="characterCounter" data-i18n="characterCounterError">Character count: Something went wrong...</p>
-      <button title="( Ctrl + S )" data-i18n="save" onclick="saveText()">Save</button>
-      <button title="( Ctrl + L )" data-i18n="load" onclick="loadText()">Load</button>
-      <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
+      <div class="buttonRow">
+        <button title="( Ctrl + S )" data-i18n="save" onclick="saveText()">Save</button>
+        <button title="( Ctrl + L )" data-i18n="load" onclick="loadText()">Load</button>
+        <button data-i18n="clear" onclick="clearNotepad()">Clear</button>
+      </div>
 
       <button class="preferenceButton" id="themeButton" onclick="switchTheme()">
         <img class="fixedIcons" id="themeIcon" src="images/moon.svg" alt="Switch Theme">
@@ -45,7 +51,7 @@
           <img class="fixedIcons" src="images/translate.svg" alt="Translate">
         </button>
 
-        <fieldset id="dropdownTranslate">
+        <fieldset id="dropdownTranslate" class="hidden">
           <legend id="languages" data-i18n="languages">Languages</legend>
           <div>
             <input id="english" type="radio" name="language" value="en" checked>

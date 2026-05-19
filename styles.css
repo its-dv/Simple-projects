@@ -33,10 +33,8 @@ textarea {
 
 button {
   margin-top: 10px;
-  margin-right: 10px;
-  padding: 10px 15px;
+  padding: 10px 10px;
   font-size: 16px;
-  border-radius: 3px;
 
   background-color: #ebebeb;
   border: #bdbdbd 1px solid;
@@ -49,12 +47,40 @@ button {
   color: white;
 }
 
+.buttonRow {
+  display: flex;
+  gap: 10px;
+}
+
+#titleRename {
+  display: flex;
+  margin-top: 0px;
+  margin-left: 0px;
+
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
+#createNote {
+  display: flex;
+  margin-top: 0px;
+  padding: 10px 15px;
+
+  background: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
 .sidebar {
   background: #ddd;
   border: #bdbdbd 1px solid;
   border-radius: 2px;
   width: 250px;
-  padding: 10px;
 }
 
 .dark .sidebar {
@@ -91,6 +117,10 @@ button {
   background: none;
   border: none;
 
+  filter: invert(1);
+}
+
+.dark #titleRename {
   filter: invert(1);
 }
 
@@ -133,14 +163,6 @@ button {
   border: 1px solid #444;
 }
 
-#createNote {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  margin-top: 0px;
-}
-
 .row {
   display: flex;
   align-items: center;
@@ -160,6 +182,10 @@ button {
   opacity: 0;
   transition: 0.5s;
   pointer-events: none;
+}
+
+.dark .toast {
+  background: #333;
 }
 
 .toast.show {
