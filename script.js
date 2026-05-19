@@ -1,10 +1,10 @@
 "use strict";
 
-// Notes structure (for future updates)
+// Notes structure
 let notes = [];
 let currentNoteId = null;
 
-// Create a new note (for future updates)
+// Create a new note
 function createNote() {
   const note = {
     id: Date.now(),
@@ -20,7 +20,7 @@ function createNote() {
   showToast(translate("noteCreated"));
 }
 
-// Rename the note title (for future updates)
+// Rename the note title
 const titleInput = document.getElementById('titleInput');
 const noteTitle = document.getElementById('noteTitle');
 
@@ -28,23 +28,25 @@ titleInput.addEventListener('input', () => {
   noteTitle.textContent = titleInput.value;
 });
 
-// Show and hide the title input field (for future updates)
+// Show and hide the title input field
 const input = document.getElementById('titleInput');
 input.value = localStorage.getItem('noteTitle') || '';
 
 function popup() {
-  const titleRename = document.getElementById('titleRename');
   const titleInput = document.getElementById('titleInput');
+  const icon = document.querySelector('#titleRename img');
 
   if (titleInput.style.display === "none") {
     titleInput.style.display = 'block';
+    icon.src = "images/tick.svg";
   } else {
     titleInput.style.display = 'none';
+    icon.src = "images/pencil.svg";
     localStorage.setItem('noteTitle', input.value);
   }
 }
 
-// Save notes to localStorage (for future updates)
+// Save notes to localStorage
 function saveToStorage() {
   localStorage.setItem("notes", JSON.stringify(notes));
 }
